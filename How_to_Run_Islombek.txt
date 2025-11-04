@@ -1,0 +1,94 @@
+How to Run CLIUniApp & GUIUniApp
+Author: Islombek Sultonov
+Student ID: 25506686
+Course: 32555 – Fundamentals of Software Development
+
+------------------------------------------------------------
+1. Requirements
+------------------------------------------------------------
+- Python 3.10 or newer must be installed.
+  Check using:
+      python --version
+  or
+      python3 --version
+
+- Tkinter is required for the GUI version (it’s usually preinstalled).
+  If not, install it using:
+      pip install tk
+
+------------------------------------------------------------
+2. Folder Structure
+------------------------------------------------------------
+After extracting the zip file, you should see:
+
+CLI_GUI_UniApp/
+    main.py
+    guiuniapp.py
+    cliuniapp/
+        __init__.py
+        student.py
+        subject.py
+        database.py
+        controllers.py
+        utils.py
+    students.data  ← will be automatically created
+
+------------------------------------------------------------
+3. Running the CLI Version (Command Line)
+------------------------------------------------------------
+The CLI version is text-based and runs directly in the terminal.
+
+To run:
+    python main.py
+or
+    python3 main.py
+
+Then follow the on-screen menus:
+- (A) Admin: view, remove, group, and partition students
+- (S) Student: login or register
+- (X) Exit the system
+
+Inside the Student Menu:
+- (e) Enrol in subjects (up to 4)
+- (r) Remove a subject
+- (s) Show enrolled subjects
+- (c) Change password
+- (x) Exit
+
+All student data is stored persistently in the file “students.data”.
+
+------------------------------------------------------------
+4. Running the GUI Version (Tkinter)
+------------------------------------------------------------
+The GUI version is a visual interface for students only.
+
+To run:
+    python guiuniapp.py
+
+You will see a login window:
+- Enter a valid student email and password (created via CLI registration).
+- On successful login, you can enrol, remove, and view subjects.
+
+GUI Features:
+- Login validation (regex)
+- Enrolment up to 4 subjects
+- Pop-up error messages for invalid login or subject limit
+- Data is stored in the same students.data file
+
+------------------------------------------------------------
+5. Resetting Data (Optional)
+------------------------------------------------------------
+If you want to start from scratch, delete the file:
+    students.data
+The program will automatically recreate a new one when it runs next.
+
+------------------------------------------------------------
+6. Notes
+------------------------------------------------------------
+- The CLI and GUI share the same database file.
+- Admin functionality exists only in the CLI version.
+- The GUI focuses on student login and enrolment only.
+- This project was completed individually by Islombek Sultonov.
+
+------------------------------------------------------------
+End of File

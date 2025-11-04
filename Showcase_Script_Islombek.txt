@@ -1,0 +1,73 @@
+Showcase Script — Islombek Sultonov
+Course: 32555 – Fundamentals of Software Development
+Project: CLIUniApp & GUIUniApp (Python)
+
+Slide 1 – Introduction
+Good morning everyone.
+My name is Islombek Sultonov, student ID 25506686, and this is my project CLIUniApp and GUIUniApp, developed in Python for the course Fundamentals of Software Development.
+This project is a university application system that allows students and admins to manage data interactively.
+Students can register, log in, enrol in up to four subjects, view grades, and change passwords.
+Admins can view, group, partition, remove, or clear student data stored in a local file called students.data.
+
+Slide 2 – Design Approach (MVC)
+My project follows the Model–View–Controller structure:
+Model: Handles data and logic — this includes the Student, Subject, and Database classes.
+Controller: Contains all the menus and program logic that connect the models to the interface.
+View: Displays the text-based CLI menus and Tkinter GUI windows.
+This structure makes the code modular and easy to maintain or extend later.
+
+Slide 3 – Input Validation using Regex
+I implemented regular expressions to ensure data integrity.
+For example, emails must end with @university.com, and passwords must start with an uppercase letter, include at least five letters, and end with three or more digits.
+This is done using these patterns:
+EMAIL_RE = re.compile(r'^[a-z]+(?:\.[a-z]+)*@university\.com$')
+PASS_RE  = re.compile(r'^[A-Z][a-zA-Z]{4,}\d{3,}$')
+This ensures all user credentials follow strict validation rules before saving to the file.
+
+Slide 4 – File Handling and Persistence
+The Database class uses Python’s pickle module to serialize and save all student data to students.data.
+If the file doesn’t exist, it automatically creates one.
+This ensures that even after the program closes, data remains available the next time it runs.
+This approach is reliable, lightweight, and perfectly fits local applications like this project.
+
+Slide 5 – Unique IDs and Enrolment Limit
+Each student gets a unique six-digit ID, and each subject gets a three-digit ID.
+The Student class includes a method that checks for duplicates before assigning an ID.
+Also, a student can enrol in a maximum of four subjects, enforced by this code:
+if len(self.subjects) >= 4:
+    raise ValueError("Students can enrol in 4 subjects only")
+This logic ensures fairness and follows the exact project requirements.
+
+Slide 6 – Grading Logic
+When a student enrols in a subject, a random mark between 25 and 100 is generated.
+Then, the grade is calculated using this logic:
+if mark >= 85: return 'HD'
+elif mark >= 75: return 'D'
+elif mark >= 65: return 'C'
+elif mark >= 50: return 'P'
+else: return 'F'
+Admins can group or partition students based on these grades to easily view pass/fail performance.
+
+Slide 7 – Error Handling
+I added multiple validation checks to make the system user-friendly.
+For example:
+- If the student enters the wrong password, the system prints: “Passwords do not match – try again.”
+- If a student tries to enrol in more than four subjects, it raises an exception with a clear message.
+This prevents system crashes and guides the user toward the correct action.
+
+Slide 8 – GUIUniApp (Tkinter)
+In addition to the CLI, I developed a basic Tkinter GUI.
+The GUI allows students to log in and manage their subjects visually.
+It connects to the same backend students.data file used by the CLI version.
+Pop-up windows show messages for incorrect credentials or when students try to exceed their enrolment limit.
+This part demonstrates my understanding of GUI programming and event handling in Python.
+
+Slide 9 – Reflection
+I worked on this project individually, which helped me understand every part of the system in depth.
+Although I will not demonstrate the CLI live today, the code is fully functional and aligns with all project requirements.
+The most challenging part was making sure data persisted correctly and that all functions matched the sample I/O format.
+Overall, I learned practical skills in regex validation, data serialization, modular programming, and GUI design.
+
+Slide 10 – Thank You
+To conclude, this project strengthened my understanding of Python and software design principles.
+Thank you for listening — I’ll be happy to answer any questions.
